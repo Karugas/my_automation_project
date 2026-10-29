@@ -9,6 +9,5 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
-    def find_elements(self, locator):
+    def find_element(self, locator):
         return self.browser.find_element(*locator)
-
