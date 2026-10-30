@@ -1,5 +1,4 @@
 import webbrowser
-
 import pytest
 from selenium import webdriver
 

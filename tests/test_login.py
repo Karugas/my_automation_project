@@ -1,14 +1,14 @@
 from pages.login_page import LoginPage
-from selenium.webdriver.common.by import By
-from pages.base_page import BasePage
+from data.user_data import TestUsers
+
+link = "https://www.saucedemo.com/"
 
 
 def test_login_standard_user(browser):
-    link = "https://www.saucedemo.com/"
     page = LoginPage(browser, link)
 
     page.open()
-    page.login("secret_sauce", "standard_user")
+    page.login(**TestUsers.STANDARD_USER)
 
     assert "inventory" in browser.current_url, "Не удалось войти!"
 
