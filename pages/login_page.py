@@ -8,3 +8,6 @@ class LoginPage(BasePage):
         self.find_element(LoginLocators.USERNAME_INPUT).send_keys(username)
         self.find_element(LoginLocators.PASSWORD_INPUT).send_keys(password)
         self.find_element(LoginLocators.LOGIN_BUTTON).click()
+
+    def get_error_message(self):
+        return self.find_element(LoginLocators.USER_LOCKED_OUT).text
