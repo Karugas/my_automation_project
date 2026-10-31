@@ -9,7 +9,6 @@ def test_login_standard_user(browser):
     page = LoginPage(browser, link)
     page.open()
     page.login(**TestUsers.STANDARD_USER)
-
     assert "inventory" in browser.current_url, "Не удалось войти!"
 
 
