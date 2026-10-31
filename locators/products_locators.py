@@ -8,4 +8,5 @@ class ProductLocators:
     CARD_PRICE = (By.XPATH, './/div[@class="inventory_item_price"]')
     CARD_ADD_BUTTON = (By.XPATH, './/button[contains(@id, "add-to-cart")]')
     SHOPPING_CART = (By.XPATH, '//div[@id="shopping_cart_container"]')
+    EMPTY_CART = (By.XPATH, '//a[contains(@aria-label, "Cart")]')
     ITEM_IN_CART = (By.XPATH, '//span[@class="shopping_cart_badge"]')
