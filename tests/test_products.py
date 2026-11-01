@@ -1,5 +1,3 @@
-import time
-
 from data.user_data import TestUsers
 from pages.login_page import LoginPage
 
@@ -77,5 +75,3 @@ def test_delete_product(browser):
     # Корзина -1
     empty_cart = product_page.empty_cart()
     assert empty_cart == "Cart, empty", "Корзина не очистилась"
-
-
