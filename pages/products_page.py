@@ -21,9 +21,22 @@ class ProductPage(BasePage):
         #Возвращаем данные что нашли
         return {"name": product_name, "price": product_price}
 
+    # Кнопка Delete -> Add to cart
+    def check_switch_delete_on_add_to_cart(self):
+        # Находим самую первую карточку
+        first_card = self.find_element(ProductLocators.FIRST_PRODUCT_CARD)
+        # Есть кнопка Add to cart
+        return first_card.find_element(*ProductLocators.CARD_ADD_BUTTON).text
+
     def go_to_cart(self):
         self.find_element(ProductLocators.SHOPPING_CART).click()
         return CartPage(self.browser, self.browser.current_url)
 
     def item_in_cart(self):
         return self.find_element(ProductLocators.ITEM_IN_CART).text
+
+    def delete_item(self):
+        self.find_element(ProductLocators.REMOVE_ITEM).click()
+
+    def empty_cart(self):
+        return self.find_element(ProductLocators.EMPTY_CART).get_attribute("aria-label")

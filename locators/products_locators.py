@@ -10,3 +10,4 @@ class ProductLocators:
     SHOPPING_CART = (By.XPATH, '//div[@id="shopping_cart_container"]')
     EMPTY_CART = (By.XPATH, '//a[contains(@aria-label, "Cart")]')
     ITEM_IN_CART = (By.XPATH, '//span[@class="shopping_cart_badge"]')
+    REMOVE_ITEM = (By.XPATH, '//button[contains(@id, "remove")]')
