@@ -13,3 +13,11 @@ class TestUsers:
         "username": "locked_out_user",
         "password": "secret_sauce"
     }
+
+
+class CheckoutInformation:
+    INFORMATION = {
+        "first_name": "Yaromir",
+        "last_name": "Udovkin",
+        "postal_code": "66622"
+    }

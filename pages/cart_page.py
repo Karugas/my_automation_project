@@ -1,6 +1,7 @@
 from locators.products_locators import ProductLocators
 from .base_page import BasePage
 from locators.cart_locators import CartLocators
+from pages.checkout_pages import CheckoutPage
 
 
 class CartPage(BasePage):
@@ -21,3 +22,7 @@ class CartPage(BasePage):
 
     def cart_list_empty(self):
         return self.find_element(CartLocators.CART_LIST)
+
+    def go_to_checkout(self):
+        self.find_element(CartLocators.BUTTON_CHECKOUT).click()
+        return CheckoutPage(self.browser, self.browser.current_url)

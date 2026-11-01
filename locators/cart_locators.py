@@ -7,3 +7,5 @@ class CartLocators:
     CART_NAME = (By.XPATH, './/div[@class="inventory_item_name"][1]')
     REMOVE_ITEM = (By.XPATH, '//button[contains(@data-test, "remove")]')
     CHECK_REMOVED_ITEM = (By.XPATH, '//div[@class="removed_cart_item"]')
+    CONTINUE_SHOPPING = (By.XPATH, '//button[@name="continue-shopping"]')
+    BUTTON_CHECKOUT = (By.XPATH, '//button[@name="checkout"]')
