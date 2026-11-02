@@ -75,3 +75,39 @@ def test_delete_product(browser):
     # Корзина -1
     empty_cart = product_page.empty_cart()
     assert empty_cart == "Cart, empty", "Корзина не очистилась"
+
+
+def test_sorted_product_low_to_high(browser):
+    # Авторизация
+    page = LoginPage(browser, link)
+    page.open()
+    product_page = page.login(**TestUsers.STANDARD_USER)
+
+    # Получаем все ценники на экране
+    price_list = product_page.price_all_products()
+    print(f"\nЦенники до сортировки: {price_list}")
+
+    # Сортируем по low_to_high
+    product_page.sort_products_low_to_high()
+    price_list_after = product_page.price_all_products()
+    print(f"Ценники после сортировки: {price_list_after}")
+    assert sorted(price_list) == price_list_after, \
+        f"Сортировка не верна, отдаёт {price_list}, вместо {price_list_after}"
+
+
+def test_sorted_product_high_to_low(browser):
+    # Авторизация
+    page = LoginPage(browser, link)
+    page.open()
+    product_page = page.login(**TestUsers.STANDARD_USER)
+
+    # Получаем все ценники на экране
+    price_list = product_page.price_all_products()
+    print(f"\nЦенники до сортировки: {price_list}")
+
+    # Сортируем по low_to_high
+    product_page.sort_products_high_to_low()
+    price_list_after = product_page.price_all_products()
+    print(f"Ценники после сортировки: {price_list_after}")
+    assert sorted(price_list, reverse=True) == price_list_after, \
+        f"Сортировка не верна, отдаёт {price_list}, вместо {price_list_after}"

@@ -11,3 +11,8 @@ class ProductLocators:
     EMPTY_CART = (By.XPATH, '//a[contains(@aria-label, "Cart")]')
     ITEM_IN_CART = (By.XPATH, '//span[@class="shopping_cart_badge"]')
     REMOVE_ITEM = (By.XPATH, '//button[contains(@id, "remove")]')
+    SORT_PRODUCTS = (By.XPATH, '//select[@aria-label="Sort products"]')
+    SORT_LOW_TO_HIGH = (By.XPATH, '//option[@value="lohi"]')
+    SORT_HIGH_TO_LOW = (By.XPATH, '//option[@value="hilo"]')
+    SORT_A_TO_Z = (By.XPATH, '//option[@value="az"]')
+    SORT_Z_TO_A = (By.XPATH, '//option[@value="za"]')

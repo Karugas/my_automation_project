@@ -40,3 +40,22 @@ class ProductPage(BasePage):
 
     def empty_cart(self):
         return self.find_element(ProductLocators.EMPTY_CART).get_attribute("aria-label")
+
+    def price_all_products(self):
+        self.find_element(ProductLocators.PRODUCT_LIST)
+        elements = self.browser.find_elements(*ProductLocators.CARD_PRICE)
+        element = [element.text.replace("$", "") for element in elements]
+        price = [float(x) for x in element]
+        return price
+
+    def sort_products_low_to_high(self):
+        self.find_element(ProductLocators.SORT_PRODUCTS).click()
+        self.find_element(ProductLocators.SORT_LOW_TO_HIGH).click()
+
+    def sort_products_high_to_low(self):
+        self.find_element(ProductLocators.SORT_PRODUCTS).click()
+        self.find_element(ProductLocators.SORT_HIGH_TO_LOW).click()
+
+    def sort_products_z_to_a(self):
+        self.find_element(ProductLocators.SORT_PRODUCTS).click()
+        self.find_element(ProductLocators.SORT_Z_TO_A).click()
