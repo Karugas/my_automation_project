@@ -12,6 +12,12 @@ def pytest_addoption(parser):
 def browser(request):
     options = Options()
 
+    options.add_experimental_option("prefs", {
+        "profile.password_manager_leak_detection": False,  # Выключаем детекцию утечек паролей
+        "profile.password_manager_enabled": False,  # Выключаем предложение сохранить пароль
+        "credentials_enable_service": False  # Отключаем службу учетных данных
+    })
+
     # Если запуск идет с флагом --headless (на GitHub Actions), включаем скрытый режим
     if request.config.getoption('--headless'):
         options.add_argument("--headless=new")

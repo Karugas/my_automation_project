@@ -33,7 +33,7 @@ class ProductPage(BasePage):
 
     # Добавить 4 товара в корзину
     def add_products_and_get_info(self) -> dict:
-        #Находим все продукты
+        # Находим все продукты и оставляем 4
         all_cards = self.find_elements(ProductLocators.INVENTORY_ITEM)
         target_cards = all_cards[:4]
 
