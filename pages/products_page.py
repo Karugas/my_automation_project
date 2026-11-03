@@ -8,18 +8,52 @@ class ProductPage(BasePage):
     def get_product_list(self):
         return self.find_element(ProductLocators.PRODUCT_LIST).text
 
+    # Добавить 1 товар в корзину
     def add_first_product_and_get_info(self) -> dict:
-        #Находим самую первую карточку
-        first_card = self.find_element(ProductLocators.FIRST_PRODUCT_CARD)
+        # Находим все продукты
+        all_cards = self.find_elements(ProductLocators.INVENTORY_ITEM)
+        target_cards = all_cards[:1]
 
-        #Получаем название и цену
-        product_name = first_card.find_element(*ProductLocators.CARD_TITLE).text
-        product_price = first_card.find_element(*ProductLocators.CARD_PRICE).text
+        selected_name = []
+        selected_price = []
 
-        #Добавляем в корзину
-        first_card.find_element(*ProductLocators.CARD_ADD_BUTTON).click()
+        for card in target_cards:
+            # Получаем название и цену
+            product_name = card.find_element(*ProductLocators.CARD_TITLE)
+            selected_name.append(product_name.text)
+
+            product_price = card.find_element(*ProductLocators.CARD_PRICE)
+            selected_price.append(product_price.text)
+
+            # Добавляем в корзину
+            card.find_element(*ProductLocators.CARD_ADD_BUTTON).click()
+
+        # Возвращаем данные что нашли
+        return {"name": selected_name, "price": selected_price}
+
+    # Добавить 4 товара в корзину
+    def add_products_and_get_info(self) -> dict:
+        #Находим все продукты
+        all_cards = self.find_elements(ProductLocators.INVENTORY_ITEM)
+        target_cards = all_cards[:4]
+
+        selected_name = []
+        selected_price = []
+
+        for card in target_cards:
+
+            #Получаем название и цену
+            product_name = card.find_element(*ProductLocators.CARD_TITLE)
+            selected_name.append(product_name.text)
+
+            product_price = card.find_element(*ProductLocators.CARD_PRICE)
+            selected_price.append(product_price.text)
+
+            #Добавляем в корзину
+            card.find_element(*ProductLocators.CARD_ADD_BUTTON).click()
+
         #Возвращаем данные что нашли
-        return {"name": product_name, "price": product_price}
+        return {"name": selected_name, "price": selected_price}
 
     # Кнопка Delete -> Add to cart
     def check_switch_delete_on_add_to_cart(self):

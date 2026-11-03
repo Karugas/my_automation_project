@@ -28,7 +28,6 @@ def test_buy_product(browser):
     # Добавляем первый товар запоминая название и цену
     expected_info = product_page.add_first_product_and_get_info()
     print(f"\n[Каталог] Запомнил товар: {expected_info}")
-
     # Переходим в корзину
     cart_page = product_page.go_to_cart()
 
@@ -44,14 +43,18 @@ def test_buy_product(browser):
     print(f"[Корзина] Видим товар: {actual_info}")
     assert actual_info["name"] == expected_info["name"], "Наименования товаров в обзоре не совпадают"
     assert actual_info["price"] == expected_info["price"], "Цены товаров в обзоре не совпадают"
-
     # Сверяем цену товара и итоговое значение
-    item_total = float(actual_info["price"].split('$')[1])
-    tax = 8.004
-    tax = round(item_total * (tax / 100), 2)
+    swipe = [x.replace("$", "") for x in actual_info["price"]]
+    item_total = [float(x) for x in swipe]
+
+    #item_total = float(swipe)
+    for i in item_total:
+        tax = 8.004
+        tax_percent = round(i * (tax / 100), 2)
+        item_total = i + tax_percent
+
     price_total = checkout_page.check_price_total()
     price_total = float(price_total.split('$')[1])
-    item_total = tax + item_total
     assert price_total == item_total, f"Ошибка {price_total} отличается от {item_total}"
     print(f"Успех! Числа совпали: {price_total} == {item_total}")
     # Тап Finish

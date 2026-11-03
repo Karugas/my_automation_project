@@ -18,11 +18,23 @@ class CheckoutPage(BasePage):
         self.find_element(CheckoutLocators.BUTTON_BACK_HOME).click()
 
     def check_price_and_name_overview(self) -> dict:
-        cart = self.find_element(CheckoutLocators.CHECKOUT_LIST)
+        # Находим все продукты
+        all_cards = self.find_elements(CheckoutLocators.CHECKOUT_LIST)
+        target_cards = all_cards[:1]
 
-        cart_price = cart.find_element(*CheckoutLocators.CHECKOUT_PRICE).text
-        cart_name = cart.find_element(*CheckoutLocators.CHECKOUT_NAME).text
-        return {"name": cart_name, "price": cart_price}
+        selected_name = []
+        selected_price = []
+
+        for card in target_cards:
+            # Получаем название и цену
+            product_name = card.find_element(*CheckoutLocators.CHECKOUT_NAME)
+            selected_name.append(product_name.text)
+
+            product_price = card.find_element(*CheckoutLocators.CHECKOUT_PRICE)
+            selected_price.append(product_price.text)
+
+        # Возвращаем данные что нашли
+        return {"name": selected_name, "price": selected_price}
 
     def check_price_total(self):
         return self.find_element(CheckoutLocators.TOTAL_PRICE).text

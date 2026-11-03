@@ -4,6 +4,7 @@ from pages.login_page import LoginPage
 link = "https://www.saucedemo.com/"
 
 
+# Добавляем 1 товар в корзину
 def test_add_product_to_cart(browser):
     # Авторизация
     page = LoginPage(browser, link)
@@ -30,6 +31,34 @@ def test_add_product_to_cart(browser):
     assert actual_info["price"] == expected_info["price"], "Цены товаров в корзине не совпадают"
 
 
+# Добавляем 4 товар в корзину
+def test_add_products_to_cart(browser):
+    # Авторизация
+    page = LoginPage(browser, link)
+    page.open()
+    product_page = page.login(**TestUsers.STANDARD_USER)
+
+    # Добавляем первый товар запоминая название и цену
+    expected_info = product_page.add_products_and_get_info()
+    print(f"\n[Каталог] Запомнил товар: {expected_info}")
+
+    # Корзина заполнилась на +4
+    cart = product_page.item_in_cart()
+    assert int(cart) == 4, f"В корзине должен быть 4 товар, а их {int(cart)}"
+    print(f"Товаров в корзине {int(cart)}")
+
+    # Переходим в корзину
+    cart_page = product_page.go_to_cart()
+
+    # Проверяем название и цену товара в корзине
+    actual_info = cart_page.check_price_and_name()
+    print(f"[Корзина] Видим товар: {actual_info}")
+
+    assert actual_info["name"] == expected_info["name"], "Наименования товаров в корзине не совпадают"
+    assert actual_info["price"] == expected_info["price"], "Цены товаров в корзине не совпадают"
+
+
+# Удаляем товар из корзины
 def test_delete_product_in_cart(browser):
     # Авторизация
     page = LoginPage(browser, link)
@@ -51,6 +80,7 @@ def test_delete_product_in_cart(browser):
     assert empty_cart == "Cart, empty", "Корзина не очистилась"
 
 
+# Удаляем товар на экране товаров
 def test_delete_product(browser):
     # Авторизация
     page = LoginPage(browser, link)
@@ -77,6 +107,7 @@ def test_delete_product(browser):
     assert empty_cart == "Cart, empty", "Корзина не очистилась"
 
 
+# Сортировка Low to High
 def test_sorted_product_low_to_high(browser):
     # Авторизация
     page = LoginPage(browser, link)
@@ -95,6 +126,7 @@ def test_sorted_product_low_to_high(browser):
         f"Сортировка не верна, отдаёт {price_list}, вместо {price_list_after}"
 
 
+# Сортировка High to Low
 def test_sorted_product_high_to_low(browser):
     # Авторизация
     page = LoginPage(browser, link)

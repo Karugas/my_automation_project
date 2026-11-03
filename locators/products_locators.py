@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 class ProductLocators:
     PRODUCT_LIST = (By.XPATH, '//div[@class="inventory_list"]')
+    INVENTORY_ITEM = (By.XPATH, '//div[@class="inventory_item"]')
     FIRST_PRODUCT_CARD = (By.XPATH, '//div[@class="inventory_item"][1]')
     CARD_TITLE = (By.XPATH, './/div[@class="inventory_item_name "]')
     CARD_PRICE = (By.XPATH, './/div[@class="inventory_item_price"]')

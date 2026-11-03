@@ -6,11 +6,20 @@ from pages.checkout_pages import CheckoutPage
 
 class CartPage(BasePage):
     def check_price_and_name(self) -> dict:
-        cart = self.find_element(CartLocators.CART_LIST)
+        cart = self.find_elements(CartLocators.CART_LIST)
 
-        cart_price = cart.find_element(*CartLocators.CART_PRICE).text
-        cart_name = cart.find_element(*CartLocators.CART_NAME).text
-        return {"name": cart_name, "price": cart_price}
+        name_item = []
+        price_item = []
+
+        for select in cart:
+            # Цена товаров
+            cart_price = select.find_element(*CartLocators.CART_PRICE)
+            price_item.append(cart_price.text)
+            # Название товаров
+            cart_name = select.find_element(*CartLocators.CART_NAME)
+            name_item.append(cart_name.text)
+
+        return {"name": name_item, "price": price_item}
 
     def empty_cart(self):
         return self.find_element(ProductLocators.EMPTY_CART).get_attribute("aria-label")
