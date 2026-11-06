@@ -2,6 +2,15 @@ import requests
 from pydantic import BaseModel
 
 
+class BookingResponseSchema(BaseModel):
+    firstname: str
+    lastname: str
+    totalprice: int
+    depositpaid: bool
+    bookingdates: object
+    additionalneeds: str
+
+
 class ApiClient:
     def __init__(self):
         self.base_url = "https://restful-booker.herokuapp.com"
@@ -27,11 +36,18 @@ class ApiClient:
         response = self.session.get(url)
         return response
 
-
-class BookingResponseSchema(BaseModel):
-    firstname: str
-    lastname: str
-    totalprice: int
-    depositpaid: bool
-    bookingdates: object
-    additionalneeds: str
+    def create_booking_user(self, firstname, lastname):
+        url = f"{self.base_url}/booking"
+        payload = {
+        "firstname": firstname,
+        "lastname": lastname,
+        "totalprice": 111,
+        "depositpaid": "true",
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+        }
+        response = self.session.post(url, json=payload)
+        return response

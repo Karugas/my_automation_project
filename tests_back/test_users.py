@@ -21,3 +21,13 @@ def test_get_booking_user():
     assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
     data = response.json()
     assert BookingResponseSchema(**data), "Неверные типы данных"
+
+
+def test_create_booking():
+    response = client.create_booking_user("Yaromir", "Udovkin")
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    assert "bookingid" in data, "Отсутствует id"
+    assert data["booking"]["firstname"] == "Yaromir"
+    assert data["booking"]["lastname"] == "Udovkin"
+
