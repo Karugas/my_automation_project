@@ -34,4 +34,4 @@ jobs:
       - name: Run UI tests
         env:
           PYTHONPATH: .
-        run: pytest -v --headless tests
+        run: pytest -v --headless tests/
