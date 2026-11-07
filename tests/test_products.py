@@ -49,7 +49,7 @@ def test_add_products_to_cart(browser):
 
     # Переходим в корзину
     cart_page = product_page.go_to_cart()
-    print(123)
+
     # Проверяем название и цену товара в корзине
     actual_info = cart_page.check_price_and_name()
     print(f"[Корзина] Видим товар: {actual_info}")
