@@ -32,7 +32,7 @@ def test_create_booking():
     assert "bookingid" in data, "Отсутствует id"
     assert data["booking"]["firstname"] == "Yaromir"
     assert data["booking"]["lastname"] == "Udovkin"
-    print(12)
+
 
 def test_update_user_booking():
     # Обновление данных пользователя
