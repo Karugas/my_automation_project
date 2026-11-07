@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     # Запускать ТОЛЬКО если изменились файлы в папке tests_back
     paths:
-      - 'tests_back'
+      - 'tests_back/**'
   workflow_dispatch:
 
 jobs:
@@ -27,4 +27,4 @@ jobs:
       - name: Run Backend tests
         env:
           PYTHONPATH: .
-        run: pytest -v tests_back
+        run: pytest -v tests_back/
