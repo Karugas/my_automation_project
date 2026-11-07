@@ -16,7 +16,7 @@ class ApiClient:
         self.base_url = "https://restful-booker.herokuapp.com"
         self.session = requests.Session()  # Сессия сохраняет куки/заголовки между запросами
 
-    def create_token(self, username, password):
+    def create_token(self):
         # Получаем токен администратора (POST-запрос)
         url = f"{self.base_url}/auth"
         payload = {
@@ -45,9 +45,30 @@ class ApiClient:
         "depositpaid": "true",
         "bookingdates": {
             "checkin": "2018-01-01",
-            "checkout": "2019-01-01"
+            "checkout": "2026-10-01"
         },
         "additionalneeds": "Breakfast"
         }
         response = self.session.post(url, json=payload)
         return response
+
+    def update_booking_user(self, id_user):
+        url = f"{self.base_url}/booking/{id_user}"
+
+        payload = {
+            "firstname": "Test",
+            "lastname": "Test",
+            "totalprice": 111,
+            "depositpaid": "true",
+            "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2027-10-01"
+            },
+            "additionalneeds": "Breakfast"
+            }
+        response = self.session.put(url, json=payload)
+        return response
+
+    def authorize(self, token):
+        self.session.headers.update({
+            "Cookie": f"token={token}"})
