@@ -1,8 +1,10 @@
-name: Run autotests
+name: UI Tests
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'tests'
   workflow_dispatch:
     inputs:
       deployment_target:
@@ -29,7 +31,7 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt
         
-      - name: Run tests
+      - name: Run UI tests
         env:
           PYTHONPATH: .
-        run: pytest -v --headless
+        run: pytest -v --headless tests
