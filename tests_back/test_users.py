@@ -52,3 +52,24 @@ def test_update_user_booking():
     data = response.json()
     assert data["firstname"] == 'Test', "Имя не изменилось"
     assert data["lastname"] == 'Test', "Фамилия не изменилась"
+
+
+def test_patch_user_booking():
+    # Обновление данных пользователя
+    response = client.create_booking_user("Yaromir", "Udovkin")
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    id_user = data["bookingid"]
+
+    # Создаём токен админа для UPDATE
+    token = client.create_token().json()
+    token = token["token"]
+    client.authorize(token=token)
+
+    # Обновляем данные пользователя (Имя, Фамилия)
+    response = client.patch_booking_user(id_user=id_user)
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    assert data["firstname"] == 'James', "Имя не изменилось"
+    assert data["lastname"] == 'Brown', "Фамилия не изменилась"
+

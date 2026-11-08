@@ -72,3 +72,13 @@ class ApiClient:
     def authorize(self, token):
         self.session.headers.update({
             "Cookie": f"token={token}"})
+
+    def patch_booking_user(self, id_user):
+        url = f"{self.base_url}/booking/{id_user}"
+
+        payload = {
+            "firstname": "James",
+            "lastname": "Brown",
+            }
+        response = self.session.patch(url, json=payload)
+        return response
