@@ -82,3 +82,8 @@ class ApiClient:
             }
         response = self.session.patch(url, json=payload)
         return response
+
+    def delete_user(self, id_user):
+        url = f"{self.base_url}/booking/{id_user}"
+        response = self.session.delete(url)
+        return response

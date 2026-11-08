@@ -61,7 +61,7 @@ def test_patch_user_booking():
     data = response.json()
     id_user = data["bookingid"]
 
-    # Создаём токен админа для UPDATE
+    # Создаём токен админа для PATCH
     token = client.create_token().json()
     token = token["token"]
     client.authorize(token=token)
@@ -73,3 +73,23 @@ def test_patch_user_booking():
     assert data["firstname"] == 'James', "Имя не изменилось"
     assert data["lastname"] == 'Brown', "Фамилия не изменилась"
 
+
+def test_delete_user_booking():
+    # Обновление данных пользователя
+    response = client.create_booking_user("Yaromir", "Udovkin")
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    id_user = data["bookingid"]
+
+    # Создаём токен админа для DELETE
+    token = client.create_token().json()
+    token = token["token"]
+    client.authorize(token=token)
+
+    # Удаляем пользователя
+    response = client.delete_user(id_user=id_user)
+    assert response.status_code == 201, f"Ожидали 200, получили {response.status_code}"
+
+    # Проверяем что пользователя нет
+    response = client.get_booking_user(id_user)
+    assert response.status_code == 404, f"Ожидали 404, получили {response.status_code}"
