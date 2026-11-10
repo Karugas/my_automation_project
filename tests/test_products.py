@@ -143,3 +143,12 @@ def test_sorted_product_high_to_low(browser):
     print(f"Ценники после сортировки: {price_list_after}")
     assert sorted(price_list, reverse=True) == price_list_after, \
         f"Сортировка не верна, отдаёт {price_list}, вместо {price_list_after}"
+
+
+def test_check_social_media(browser):
+    # Авторизация
+    page = LoginPage(browser, link)
+    page.open()
+    product_page = page.login(**TestUsers.STANDARD_USER)
+    # Проверка социальных сетей
+    product_page.check_social_media()

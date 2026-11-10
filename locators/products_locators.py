@@ -17,3 +17,6 @@ class ProductLocators:
     SORT_HIGH_TO_LOW = (By.XPATH, '//option[@value="hilo"]')
     SORT_A_TO_Z = (By.XPATH, '//option[@value="az"]')
     SORT_Z_TO_A = (By.XPATH, '//option[@value="za"]')
+    SOCIAL_MEDIA_X = (By.XPATH, '//a[@data-test="social-x"]')
+    SOCIAL_MEDIA_FACEBOOK = (By.XPATH, '//a[@data-test="social-facebook"]')
+    SOCIAL_MEDIA_LINKEDIN = (By.XPATH, '//a[@data-test="social-linkedin"]')

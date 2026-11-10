@@ -93,3 +93,8 @@ class ProductPage(BasePage):
     def sort_products_z_to_a(self):
         self.find_element(ProductLocators.SORT_PRODUCTS).click()
         self.find_element(ProductLocators.SORT_Z_TO_A).click()
+
+    def check_social_media(self):
+        self.find_element(ProductLocators.SOCIAL_MEDIA_X).is_displayed()
+        self.find_element(ProductLocators.SOCIAL_MEDIA_FACEBOOK).is_displayed()
+        self.find_element(ProductLocators.SOCIAL_MEDIA_LINKEDIN).is_displayed()
