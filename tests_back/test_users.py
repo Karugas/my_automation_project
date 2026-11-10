@@ -5,6 +5,11 @@ from api_client import ApiClient, BookingResponseSchema
 client = ApiClient()
 
 
+def test_health_check():
+    response = client.health_check()
+    assert response.status_code == 201, "Сервис не отвечает"
+
+
 def test_get_booking_list():
     # Метод GET, получаем список книг
     response = client.get_booking_list()

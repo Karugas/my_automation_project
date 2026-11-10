@@ -87,3 +87,8 @@ class ApiClient:
         url = f"{self.base_url}/booking/{id_user}"
         response = self.session.delete(url)
         return response
+
+    def health_check(self):
+        url = f"{self.base_url}/ping"
+        response = self.session.get(url)
+        return response
