@@ -2,7 +2,7 @@ name: Run Tests and Deploy Allure Report
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main]
   workflow_dispatch: # Позволяет запускать тесты вручную по кнопке в GitHub
 
 permissions:
