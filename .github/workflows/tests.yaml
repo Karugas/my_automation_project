@@ -41,7 +41,7 @@ jobs:
       - name: Install Allure CLI and Generate Report
         if: always()
         run: |
-          brew install allure
+          npm install -g allure-commandline --save-dev
           mkdir -p allure-history
           cp -r gh-pages/history allure-results/ 2>/dev/null || true
           allure generate allure-results -o allure-history --clean
