@@ -26,8 +26,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Pytest with Allure
-        run: pytest --alluredir=allure-results
+            - name: Run Pytest with Allure
+        run: pytest -v --alluredir=allure-results
         continue-on-error: true
 
       - name: Get Allure history
@@ -41,13 +41,11 @@ jobs:
       - name: Install Allure CLI and Generate Report
         if: always()
         run: |
-          wget -q https://github.com
-          tar -zxvf allure-2.30.0.tgz -C /opt/
-          ln -s /opt/allure-2.30.0/bin/allure /usr/local/bin/allure
+          brew install allure
           mkdir -p allure-history
           cp -r gh-pages/history allure-results/ 2>/dev/null || true
           allure generate allure-results -o allure-history --clean
-
+          
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
