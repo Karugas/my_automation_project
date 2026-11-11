@@ -1,4 +1,3 @@
-# my_automation_project
 # Автотесты для [Swag Labs / Restful-Booker]
 
 Проект по автоматизации UI и API тестирования веб-сервиса [[Swag Labs](https://www.saucedemo.com/)]. 
