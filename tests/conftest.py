@@ -3,7 +3,6 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-
 # Добавляем в pytest флаг --headless
 def pytest_addoption(parser):
     parser.addoption('--headless', action='store_true', help='Run tests in headless mode')
