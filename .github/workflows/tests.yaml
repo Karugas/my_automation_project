@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-            - name: Run Pytest with Allure
+      - name: Run Pytest with Allure
         run: pytest -v --alluredir=allure-results
         continue-on-error: true
 
