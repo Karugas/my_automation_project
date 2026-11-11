@@ -1,4 +1,4 @@
-# Автотесты для [Swag Labs / Restful-Booker]
+# Automated Testing Framework (UI & API)
 
 Проект по автоматизации UI и API тестирования веб-сервиса [[Swag Labs](https://www.saucedemo.com/)].
 
