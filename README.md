@@ -1,13 +1,13 @@
 # Автотесты для [Swag Labs / Restful-Booker]
 
-Проект по автоматизации UI и API тестирования веб-сервиса [[Swag Labs](https://www.saucedemo.com/)]. 
-В основе фреймворка лежит паттерн **Page Object Model (POM)**.
+Проект по автоматизации UI и API тестирования веб-сервиса [[Swag Labs](https://www.saucedemo.com/)].
 
 ### 🧰 Используемый стек
-* Python 3.10 + Pytest
-* Selenium
-* Allure Report
-* GitHub Actions (CI)
+* **Язык:** Python 3.10
+* **Тестовый фреймворк:** Pytest
+* **UI-автоматизация:** Selenium WebDriver (паттерн Page Object Model, разделение локаторов и логики страниц)
+* **API-автоматизация:** Requests (проверка CRUD-операций, статус-кодов и схем ответов)
+* **Отчетность и CI/CD:** Allure Framework, GitHub Actions, GitHub Pages
 
 ### ✅ Что покрыто тестами
 * Авторизация пользователя (позитивные и негативные сценарии).
