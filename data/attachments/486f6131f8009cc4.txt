@@ -1,0 +1,8 @@
+
+Запуск браузера...
+
+[Каталог] Запомнил товар: {'name': ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket'], 'price': ['$29.99', '$9.99', '$15.99', '$49.99']}
+Товаров в корзине 4
+[Корзина] Видим товар: {'name': ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket'], 'price': ['$29.99', '$9.99', '$15.99', '$49.99']}
+
+Закрытие браузера...
