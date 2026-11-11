@@ -92,3 +92,8 @@ class ApiClient:
         url = f"{self.base_url}/ping"
         response = self.session.get(url)
         return response
+
+    def filter_by_name(self):
+        url = f"{self.base_url}/booking?firstname=YaromirTestUser"
+        response = self.session.get(url)
+        return response

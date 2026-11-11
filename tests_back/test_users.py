@@ -99,3 +99,56 @@ def test_delete_user_booking():
     # Проверяем что пользователя нет
     response = client.get_booking_user(id_user)
     assert response.status_code == 404, f"Ожидали 404, получили {response.status_code}"
+
+
+def test_update_user_without_token():
+    # Обновление данных пользователя
+    response = client.create_booking_user("Yaromir", "Udovkin")
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    id_user = data["bookingid"]
+
+    # Обновляем данные пользователя (Имя, Фамилия)
+    response = client.update_booking_user(id_user=id_user)
+    assert response.status_code == 403, f"Ожидали 403, получили {response.status_code}"
+
+
+def test_patch_user_without_token():
+    # Обновление данных пользователя
+    response = client.create_booking_user("Yaromir", "Udovkin")
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    id_user = data["bookingid"]
+
+    # Обновляем данные пользователя (Имя, Фамилия)
+    response = client.patch_booking_user(id_user=id_user)
+    assert response.status_code == 403, f"Ожидали 403, получили {response.status_code}"
+
+
+def test_delete_user_without_token():
+    # Обновление данных пользователя
+    response = client.create_booking_user("Yaromir", "Udovkin")
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    id_user = data["bookingid"]
+
+    # Удаляем пользователя
+    response = client.delete_user(id_user=id_user)
+    assert response.status_code == 403, f"Ожидали 403, получили {response.status_code}"
+
+
+def test_filter_by_name():
+    # Создание пользователя
+    response = client.create_booking_user("YaromirTestUser", "Udovkin")
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data = response.json()
+    # Имя и Фамилия совпадают
+    bookingid_create = data["bookingid"]
+    print(bookingid_create)
+    assert "bookingid" in data, "Отсутствует id"
+    assert data["booking"]["firstname"] == "YaromirTestUser"
+
+    response = client.filter_by_name()
+    assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
+    data_filter = response.json()
+    assert {"bookingid": bookingid_create} in data_filter, "id отсутствует"
