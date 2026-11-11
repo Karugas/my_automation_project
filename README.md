@@ -19,7 +19,7 @@
 
 После каждого коммита тесты автоматически прогоняются в **GitHub Actions** (в headless-режиме), а актуальный отчет публикуется на GitHub Pages:
 
-👉 **[Открыть интерактивный Allure Report](https://github.io/my_automation_project/)**
+👉 **[Открыть интерактивный Allure Report](https://karugas.github.io/my_automation_project/)**
 
 ![Allure Report Preview](assets/allure-report.png)
 
