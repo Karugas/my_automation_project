@@ -19,7 +19,7 @@ def browser(request):
     })
 
     # Если запуск идет с флагом --headless (на GitHub Actions), включаем скрытый режим
-    if request.config.getoption('--headless'):
+    if request.config.getoption('--headless') or os.getenv("CI"):
         options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
