@@ -42,7 +42,7 @@ my_automation_project/
 
 1. Клонировать репозиторий:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/Karugas/my_automation_project
    cd my_automation_project
    ```
 2. Установить зависимости:
