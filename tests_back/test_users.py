@@ -18,7 +18,7 @@ def test_get_booking_list():
     assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
     # Превращаем ответ из JSON в python словарь dict
     data = response.json()
-    assert {'bookingid': 1} in data
+    assert {"bookingid": 12} in data, "Отсутствует id"
 
 
 def test_get_booking_user():
@@ -108,6 +108,9 @@ def test_update_user_without_token():
     data = response.json()
     id_user = data["bookingid"]
 
+    # Обнуляем авторизацию
+    client.witch_out_authorize()
+
     # Обновляем данные пользователя (Имя, Фамилия)
     response = client.update_booking_user(id_user=id_user)
     assert response.status_code == 403, f"Ожидали 403, получили {response.status_code}"
@@ -120,6 +123,8 @@ def test_patch_user_without_token():
     data = response.json()
     id_user = data["bookingid"]
 
+    # Обнуляем авторизацию
+    client.witch_out_authorize()
     # Обновляем данные пользователя (Имя, Фамилия)
     response = client.patch_booking_user(id_user=id_user)
     assert response.status_code == 403, f"Ожидали 403, получили {response.status_code}"
@@ -132,6 +137,8 @@ def test_delete_user_without_token():
     data = response.json()
     id_user = data["bookingid"]
 
+    # Обнуляем авторизацию
+    client.witch_out_authorize()
     # Удаляем пользователя
     response = client.delete_user(id_user=id_user)
     assert response.status_code == 403, f"Ожидали 403, получили {response.status_code}"
@@ -142,6 +149,9 @@ def test_filter_by_name():
     response = client.create_booking_user("YaromirTestUser", "Udovkin")
     assert response.status_code == 200, f"Ожидали 200, получили {response.status_code}"
     data = response.json()
+
+    # Обнуляем авторизацию
+    client.witch_out_authorize()
     # Имя и Фамилия совпадают
     bookingid_create = data["bookingid"]
     print(bookingid_create)

@@ -73,6 +73,10 @@ class ApiClient:
         self.session.headers.update({
             "Cookie": f"token={token}"})
 
+    def witch_out_authorize(self):
+        self.session.headers.update({
+            "Cookie": f"token=123"})
+
     def patch_booking_user(self, id_user):
         url = f"{self.base_url}/booking/{id_user}"
 
