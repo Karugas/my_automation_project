@@ -97,8 +97,12 @@ class ApiClient:
         response = self.session.get(url)
         return response
 
+    # Фильтр по имени
     def filter_by_name(self):
         url = f"{self.base_url}/booking?firstname=YaromirTestUser"
         response = self.session.get(url)
         return response
 
+    def send_request_without_auth(self, method: str, booking_id: int, payload: dict = None):
+        url = f"{self.base_url}/booking/{booking_id}"
+        return self.session.request(method=method, url=url, json=payload)
