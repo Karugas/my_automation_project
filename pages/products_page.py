@@ -98,3 +98,7 @@ class ProductPage(BasePage):
         self.find_element(ProductLocators.SOCIAL_MEDIA_X).is_displayed()
         self.find_element(ProductLocators.SOCIAL_MEDIA_FACEBOOK).is_displayed()
         self.find_element(ProductLocators.SOCIAL_MEDIA_LINKEDIN).is_displayed()
+
+    def logout(self):
+        self.find_element(ProductLocators.BURGER_MENU).click()
+        self.find_element(ProductLocators.LOGOUT).click()

@@ -152,3 +152,13 @@ def test_check_social_media(browser):
     product_page = page.login(**TestUsers.STANDARD_USER)
     # Проверка социальных сетей
     product_page.check_social_media()
+
+
+def test_logout(browser):
+    # Авторизация
+    page = LoginPage(browser, link)
+    page.open()
+    product_page = page.login(**TestUsers.STANDARD_USER)
+
+    product_page.logout()
+    assert product_page.wait_for_url(link), "Пользователь не вышёл из аккаунта"

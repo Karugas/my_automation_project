@@ -20,3 +20,5 @@ class ProductLocators:
     SOCIAL_MEDIA_X = (By.XPATH, '//a[@data-test="social-x"]')
     SOCIAL_MEDIA_FACEBOOK = (By.XPATH, '//a[@data-test="social-facebook"]')
     SOCIAL_MEDIA_LINKEDIN = (By.XPATH, '//a[@data-test="social-linkedin"]')
+    BURGER_MENU = (By.XPATH, '//button[@type="button"]')
+    LOGOUT = (By.XPATH, '//a[@id="logout_sidebar_link"]')
