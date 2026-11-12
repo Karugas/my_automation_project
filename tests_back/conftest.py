@@ -1,5 +1,5 @@
 import pytest
-from api_client import ApiClient
+from tests_back.api.api_client import ApiClient
 
 
 @pytest.fixture(scope="function")

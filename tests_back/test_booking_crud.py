@@ -1,4 +1,4 @@
-from api_client import BookingResponseSchema
+from tests_back.api.api_client import BookingResponseSchema
 
 
 def test_get_booking_list(client):

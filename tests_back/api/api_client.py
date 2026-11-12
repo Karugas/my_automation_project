@@ -73,7 +73,7 @@ class ApiClient:
         self.session.headers.update({
             "Cookie": f"token={token}"})
 
-    def witch_out_authorize(self):
+    def without_authorize(self):
         self.session.headers.update({
             "Cookie": f"token=123"})
 
