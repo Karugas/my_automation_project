@@ -1,13 +1,14 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 
 
 class BasePage:
-    def __init__(self, browser: WebDriver, url: str):
+    BASE_URL = "https://www.saucedemo.com/"
+
+    def __init__(self, browser: WebDriver, url: str = None):
         self.browser = browser
-        self.url = url
+        self.url = url or self.BASE_URL
 
     def open(self):
         self.browser.get(self.url)

@@ -7,8 +7,7 @@ link = "https://www.saucedemo.com/"
 # Добавляем 1 товар в корзину
 def test_add_product_to_cart(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
 
     # Добавляем первый товар запоминая название и цену
@@ -34,8 +33,7 @@ def test_add_product_to_cart(browser):
 # Добавляем 4 товар в корзину
 def test_add_products_to_cart(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
 
     # Добавляем первый товар запоминая название и цену
@@ -61,8 +59,7 @@ def test_add_products_to_cart(browser):
 # Удаляем товар из корзины
 def test_delete_product_in_cart(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
 
     # Добавляем первый товар в корзину
@@ -83,8 +80,7 @@ def test_delete_product_in_cart(browser):
 # Удаляем товар на экране товаров
 def test_delete_product(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
 
     # Добавляем первый товар в корзину
@@ -110,8 +106,7 @@ def test_delete_product(browser):
 # Сортировка Low to High
 def test_sorted_product_low_to_high(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
 
     # Получаем все ценники на экране
@@ -147,8 +142,7 @@ def test_sorted_product_high_to_low(browser):
 
 def test_check_social_media(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
     # Проверка социальных сетей
     product_page.check_social_media()
@@ -156,8 +150,7 @@ def test_check_social_media(browser):
 
 def test_logout(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
 
     product_page.logout()

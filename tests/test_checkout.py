@@ -5,8 +5,7 @@ link = "https://www.saucedemo.com/"
 
 
 def test_input_information_user(browser):
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
     # Добавляем первый товар
     product_page.add_first_product_and_get_info()
@@ -22,8 +21,7 @@ def test_input_information_user(browser):
 
 
 def test_buy_product(browser):
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
     # Добавляем первый товар запоминая название и цену
     expected_info = product_page.add_first_product_and_get_info()
@@ -67,8 +65,7 @@ def test_buy_product(browser):
 
 def test_buy_many_product(browser):
     # Авторизация
-    page = LoginPage(browser, link)
-    page.open()
+    page = LoginPage(browser)
     product_page = page.login(**TestUsers.STANDARD_USER)
 
     # Добавляем первый товар запоминая название и цену

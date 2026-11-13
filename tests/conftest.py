@@ -28,6 +28,8 @@ def browser(request):
     print("\nЗапуск браузера...")
     browser = webdriver.Chrome(options=options)
     browser.implicitly_wait(10)
+    # Открываем базовый сайт перед передачей браузера в тест
+    browser.get("https://www.saucedemo.com/")
 
     yield browser
 
